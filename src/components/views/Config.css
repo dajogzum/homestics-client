@@ -1,0 +1,69 @@
+.Config {
+  padding: 30px 60px 0px 60px;
+}
+
+.Config>.Header>h1 {
+  margin: 0;
+  font-weight: 800;
+  display: inline;
+  color: #fff;
+}
+
+.Config>.Header {
+  width: 100%;
+}
+
+h3 {
+  color: #999;
+}
+
+.forms {
+  float: left;
+}
+
+p {
+  margin: 0px 0px 2px 0px;
+  font-weight: 300;
+  color: #ebebeb
+}
+
+.Config>div {
+  position: relative;
+  display: block;
+  width: 50%;
+  height: auto;
+}
+
+.remove {
+  top: 7px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #7e0000;
+}
+
+.remove:hover {
+  color: #ad0000;
+}
+
+.remove:active {
+  color: #f00;
+}
+
+.container-button {
+  width: 100%;
+  height: 70px;
+}
+
+.rc-color-picker-trigger {
+  width: 110px;
+  height: 5px;
+  box-shadow: none;
+  border: none;
+  border-radius: 0 0 2px 2px;
+}
+
+.cstmpicker {
+  margin-right: -114px;
+  position: relative;
+  top: 10px;
+}

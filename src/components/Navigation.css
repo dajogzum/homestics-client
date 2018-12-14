@@ -1,0 +1,106 @@
+.Header {
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 13.5px;
+  width: 100%;
+  position: relative;
+}
+
+.Nav-Button {
+  height: 21px;
+  text-decoration: none;
+  color: #999;
+  display: inline-block;
+  outline: none !important;
+  padding: 14.5px;
+  transition: all ease-in-out .1s;
+  cursor: pointer;
+  float: left;
+}
+.Nav-Button:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.hidden {
+  margin-right: -170px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all ease-in-out .5s;
+}
+
+.visible{
+  margin-right: 0px;
+  opacity: 1;
+  visibility: visible;
+  transition: all ease-in-out .5s;
+}
+
+.separator {
+  height: auto;
+  position: relative;
+  display: block;
+  border-left: 1px solid #999;
+  box-sizing: border-box;
+  padding: 15px 0px;
+  margin: 11px 2px 0 2px;
+}
+
+.slide {
+  color: #999;
+  padding: 15px 0px;
+  cursor: pointer;
+  transition: all ease-in-out .1s;
+}
+
+.slide:hover {
+  color: #fff;
+}
+
+.menu {
+  height: 50px;
+  width: 100%;
+  display: inline-block;
+  background-color: #222;
+  border-color: #222;
+  border-bottom: 2px solid #333;
+  margin: 0px;
+  padding-left: 20px;
+}
+
+.menu>.toLeft>a {
+  float: left !important;
+}
+
+.menu>.toLeft>li {
+  float: left !important;
+}
+
+.menu>.toRight>li {
+  float: right !important;
+}
+
+.menu>.toRight>a {
+  float: right !important;
+}
+
+.toLeft {
+  left: 0px !important;
+  margin-left: 0px !important;
+  position: relative;
+  transition: all ease-in-out .5s;
+}
+
+.toRight {
+  right: 0px !important;
+  margin-right: 40px !important;
+  position: relative;
+  transition: all ease-in-out .5s;
+}
+
+.fade {
+  opacity: 0;
+  visibility: hidden;
+  transition: all ease-in-out .5s;
+}

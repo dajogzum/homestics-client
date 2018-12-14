@@ -6,10 +6,11 @@ import {connect} from 'react-redux';
 import * as Constans from '../enums';
 import * as Resources from '../resources';
 
-import {ChangeModeButton} from './buttons/ChangeModeButton';
-import Clock from './Clock';
+import './Navigation.css';
 
-import {changeView} from '../actions';
+import {ChangeModeButton} from './buttons/ChangeModeButton';
+import {ChangeViewButton} from './buttons/ChangeViewButton';
+import Clock from './Clock';
 
 var socket;
 
@@ -31,62 +32,49 @@ class AppNavigation extends Component {
             Homestics
           </div>
         </li>
-        <li>
-          <div onClick={() => {
-              this.props.changeView(Constans.View.Charts)
-            }}>
-            <span className="material-icons md-16">gesture</span>
-            Wykresy
-          </div>
-        </li>
+        <ChangeViewButton Target={Constans.View.Charts} Icon="gestures" Text={Resources.Texts.Charts}/>
       </ul>
       <ul className={this.state.mode === null
           ? "toLeft fade"
           : "toLeft"}>
         <li className="separator"></li>
-        <ChangeModeButton Type={Constans.Mode.Now} Text={Resources.Texts.Now}/>
-        <ChangeModeButton Type={Constans.Mode.Hours} Text={Resources.Texts.Hours}/>
-        <ChangeModeButton Type={Constans.Mode.Days} Text={Resources.Texts.Days}/>
-        <ChangeModeButton Type={Constans.Mode.Months} Text={Resources.Texts.Months}/>
+        <li><ChangeModeButton Type={Constans.Mode.Now} Text={Resources.Texts.Now}/></li>
+        <li><ChangeModeButton Type={Constans.Mode.Hours} Text={Resources.Texts.Hours}/></li>
+        <li><ChangeModeButton Type={Constans.Mode.Days} Text={Resources.Texts.Days}/></li>
+        <li><ChangeModeButton Type={Constans.Mode.Months} Text={Resources.Texts.Months}/></li>
       </ul>
-      <ul className={this.state.right
-          ? "toRight"
-          : "toRight hide"}>
-        <li>
-          <div onClick={() => {
-              this.props.changeView(Constans.View.Config)
-            }}>
-            <span className="material-icons md-16">settings</span>
-            Ustawienia
-          </div>
+      <ul className="toRight">
+        <li className={this.state.right
+            ? "visible"
+            : "hidden"}>
+          <ChangeViewButton Target={Constans.View.Config} Icon="settings" Text={Resources.Texts.Config}/>
         </li>
-        <li>
-          <div onClick={() => {
-              this.props.changeView(Constans.View.Curve)
-            }}>
-            <span className="material-icons md-16">show_chart</span>
-            Krzywa Grzewcza
-          </div>
+        <li className={this.state.right
+            ? "visible"
+            : "hidden"}>
+          <ChangeViewButton Target={Constans.View.Curve} Icon="show_chart" Text={Resources.Texts.Curve}/>
         </li>
       </ul>
       <ul className="toRight">
-        {
-          this.state.right
-            ? <li onClick={() => {
-                  this.setState({
-                    right: !this.state.right
-                  })
-                }} className="slide">
-                <span className="material-icons md-16">chevron_right</span>
-              </li>
-            : <li onClick={() => {
-                  this.setState({
-                    right: !this.state.right
-                  })
-                }} className="slide">
-                <span className="material-icons md-16">chevron_left</span>
-              </li>
-        }
+        <li>
+          {
+            this.state.right
+              ? <div onClick={() => {
+                    this.setState({
+                      right: !this.state.right
+                    })
+                  }} className="slide">
+                  <span className="material-icons md-16">chevron_right</span>
+                </div>
+              : <div onClick={() => {
+                    this.setState({
+                      right: !this.state.right
+                    })
+                  }} className="slide">
+                  <span className="material-icons md-16">chevron_left</span>
+                </div>
+          }
+        </li>
       </ul>
       <ul className="toRight">
         <li>
@@ -98,10 +86,8 @@ class AppNavigation extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {View: state.View}
+  return {}
 };
-const mapDispatchToProps = {
-  changeView
-};
+const mapDispatchToProps = {};
 
 export const Navigation = connect(mapStateToProps, mapDispatchToProps)(AppNavigation);

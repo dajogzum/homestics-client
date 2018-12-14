@@ -12,13 +12,11 @@ class AppChangeModeButton extends Component {
   }
 
   render() {
-    return (<li>
-      <a className={this.props.Mode === this.props.Type
-          ? "selected"
-          : ""} onClick={() => {
-          this.props.changeMode(this.props.Type)
-        }}>{this.props.Text}</a>
-    </li>);
+    return (<div className={this.props.Mode === this.props.Type
+        ? "Nav-Button selectedMode"
+        : "Nav-Button"} onClick={() => {
+        this.props.changeMode(this.props.Type)
+      }}>{this.props.Text}</div>);
   }
 }
 
