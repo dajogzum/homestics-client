@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import './ChangeModeButton.css'
 
-import {changeMode} from '../../actions';
+import {changeMode} from 'actions';
 
 class AppChangeModeButton extends Component {
   constructor(props) {
@@ -13,8 +13,8 @@ class AppChangeModeButton extends Component {
 
   render() {
     return (<div className={this.props.Mode === this.props.Type
-        ? "Nav-Button selectedMode"
-        : "Nav-Button"} onClick={() => {
+        ? "navigationButton selectedMode"
+        : "navigationButton"} onClick={() => {
         this.props.changeMode(this.props.Type)
       }}>{this.props.Text}</div>);
   }

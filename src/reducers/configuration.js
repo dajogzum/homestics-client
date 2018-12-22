@@ -1,8 +1,28 @@
-import * as Constans from '../enums';
-import * as Resources from '../resources';
+import * as Constans from 'enums';
+import * as Resources from 'resources';
+
+export const SocketIOClient = (state = false, action) => {
+  switch (action.type) {
+    case 'SOCKET_CONNECTED':
+      return action.socket
+    default:
+      return state
+  }
+}
 
 export const Config = (state = false, action) => {
   switch (action.type) {
+    case 'CONFIG_FETCHED':
+      return action.config
+    default:
+      return state
+  }
+}
+
+export const TemporaryConfig = (state = false, action) => {
+  switch (action.type) {
+    case 'UPDATE_CONFIG':
+      return action.config
     case 'CONFIG_FETCHED':
       return action.config
     default:

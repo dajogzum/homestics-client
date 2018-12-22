@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import socketIOClient from 'socket.io-client';
 import {connect} from 'react-redux';
 
-import * as Constans from '../enums';
-import * as Resources from '../resources';
+import * as Constans from 'enums';
+import * as Resources from 'resources';
 
 import './Navigation.css';
 
@@ -20,63 +20,58 @@ class AppNavigation extends Component {
     this.state = {}
   }
 
-  componentDidMount() {
-    console.log();
+  componentDidMount() {}
+
+  drawer() {
+    let expanded = this.state.right
+      ? "chevron_right"
+      : "chevron_left";
+    return (<div onClick={() => {
+        this.setState({
+          right: !this.state.right
+        })
+      }} className="navigationSlide">
+      <span className="material-icons md-16">{expanded}</span>
+    </div>)
   }
 
   render() {
-    return (<div className="menu">
-      <ul className="toLeft">
+    let drawerVisibility = this.state.right
+      ? "navigationVisible"
+      : "navigationHidden";
+    let modeVisibility = this.props.View !== Constans.View.Charts
+      ? "navigationToLeft navigationFade"
+      : "navigationToLeft";
+    return (<div className="navigationMenu">
+      <ul className="navigationToLeft">
         <li>
-          <div className="Header">
+          <div className="navigationHeader">
             Homestics
           </div>
         </li>
         <ChangeViewButton Target={Constans.View.Charts} Icon="gestures" Text={Resources.Texts.Charts}/>
       </ul>
-      <ul className={this.state.mode === null
-          ? "toLeft fade"
-          : "toLeft"}>
-        <li className="separator"></li>
+      <ul className={modeVisibility}>
+        <li className="navigationSeparator"></li>
         <li><ChangeModeButton Type={Constans.Mode.Now} Text={Resources.Texts.Now}/></li>
         <li><ChangeModeButton Type={Constans.Mode.Hours} Text={Resources.Texts.Hours}/></li>
         <li><ChangeModeButton Type={Constans.Mode.Days} Text={Resources.Texts.Days}/></li>
         <li><ChangeModeButton Type={Constans.Mode.Months} Text={Resources.Texts.Months}/></li>
       </ul>
-      <ul className="toRight">
-        <li className={this.state.right
-            ? "visible"
-            : "hidden"}>
+      <ul className="navigationToRight">
+        <li className={drawerVisibility}>
           <ChangeViewButton Target={Constans.View.Config} Icon="settings" Text={Resources.Texts.Config}/>
         </li>
-        <li className={this.state.right
-            ? "visible"
-            : "hidden"}>
+        <li className={drawerVisibility}>
           <ChangeViewButton Target={Constans.View.Curve} Icon="show_chart" Text={Resources.Texts.Curve}/>
         </li>
       </ul>
-      <ul className="toRight">
+      <ul className="navigationToRight">
         <li>
-          {
-            this.state.right
-              ? <div onClick={() => {
-                    this.setState({
-                      right: !this.state.right
-                    })
-                  }} className="slide">
-                  <span className="material-icons md-16">chevron_right</span>
-                </div>
-              : <div onClick={() => {
-                    this.setState({
-                      right: !this.state.right
-                    })
-                  }} className="slide">
-                  <span className="material-icons md-16">chevron_left</span>
-                </div>
-          }
+          {this.drawer()}
         </li>
       </ul>
-      <ul className="toRight">
+      <ul className="navigationToRight">
         <li>
           <Clock/>
         </li>
@@ -86,7 +81,7 @@ class AppNavigation extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {View: state.View}
 };
 const mapDispatchToProps = {};
 

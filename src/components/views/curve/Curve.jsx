@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
-import * as Constans from '../../enums';
-import * as Resources from '../../resources';
+import * as Constans from 'enums';
+import * as Resources from 'resources';
 
 import './Curve.css'
 
-import {changeView} from '../../actions';
+import {changeView} from 'actions';
 
 class AppCurve extends Component {
   constructor(props) {

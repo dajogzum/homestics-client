@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import './ChangeViewButton.css'
 
-import {changeView} from '../../actions';
+import {changeView} from 'actions';
 
 class AppChangeViewButton extends Component {
   constructor(props) {
@@ -13,8 +13,8 @@ class AppChangeViewButton extends Component {
 
   render() {
     return (<div className={this.props.View === this.props.Target
-        ? "Nav-Button selectedView"
-        : "Nav-Button"} onClick={() => {
+        ? "navigationButton selectedView"
+        : "navigationButton"} onClick={() => {
         this.props.changeView(this.props.Target)
       }}>
       <span className="material-icons md-16">{this.props.Icon}</span>
